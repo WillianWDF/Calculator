@@ -15,6 +15,8 @@ export default function App() {
     const fistNumber = parseFloat(splitNumbers[0])
     const lastNumber = parseFloat(splitNumbers[2])
     const operator = splitNumbers[1]
+    
+   
 
     // Faz ação referente tecla pressionada
     switch (operator) {
@@ -31,6 +33,15 @@ export default function App() {
         setCurrentNumber((fistNumber / lastNumber).toString())
         return
     }
+  }
+
+  function operatorHandler() {
+    if(currentNumber>0){
+      setCurrentNumber(-currentNumber)
+    }else{
+      setCurrentNumber(Math.abs(currentNumber));
+    }
+    return
   }
 
   function handleInput(buttonPressed) {
@@ -52,6 +63,7 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        operatorHandler(currentNumber)
         return
     }
 
